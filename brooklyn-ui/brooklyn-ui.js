@@ -1,6 +1,6 @@
 // NO SLEEP TILL BROOKLYN
 
-function bkSelectbox($timeout) {
+function bkSelectbox($interval) {
     return {
         restrict: 'E',
         
@@ -48,6 +48,8 @@ function bkSelectbox($timeout) {
             scope.selindex = 0;
             scope.clickedOption = false;
             scope.opened = false;
+            var mousedown = false;
+            var blur_interval;
             
             scope.$watch('values', function() {
                 if(scope.values == undefined) {
@@ -159,14 +161,25 @@ function bkSelectbox($timeout) {
             
             // clicked off the input box, so try to use whatever is selected as our value
             el_select_input.blur(function(event) {
-                // eh. only way to stop blur from blocking the ng-click
-                $timeout(function(){
-                    if(!scope.clickedOption) {
-                        scope.select(scope.selindex,0);
+                if (angular.isDefined(blur_interval)) return;
+                blur_interval = $interval(function() {
+                    if(!mousedown) {
+                        $interval.cancel(blur_interval);
+                        if(!scope.clickedOption) {
+                            scope.select(scope.selindex,0);
+                        }
                     }
                 },100);
             });
             
+            el_select_results.on('mousedown mouseup', 'li', function(event) {
+                 if (event.type == 'mousedown') {
+                    mousedown = true;
+                 } else if (event.type == 'mouseup') {
+                    mousedown = false;
+                 }
+            });
+
             // watch for changes to the results filter
             scope.$watch('val', function() {
                 if(scope.opened) {

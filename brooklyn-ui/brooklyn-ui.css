@@ -1,0 +1,153 @@
+input.focus-trap {
+    position: absolute;
+    clip: rect(0,0,0,0) !important;
+    height: 1px !important;
+    width: 1px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    outline: 0 none !important;
+}
+.placeholder {
+    color: #888;
+}
+.brooklyn {
+    padding: 0;
+    width: 100%;
+    position: relative;
+}
+.brooklyn .btn, .brooklyn input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    outline: 0 none;
+}
+.brooklyn label {
+    position: absolute;
+    padding: 4px 0;
+    top: 0;
+    left: 12px;
+    font-weight: normal;
+    color: #888;
+    transition: all 0.2s ease-out;
+    opacity: 0;
+    font-size: 10pt;
+}
+.brooklyn.showLabel label {
+    opacity: 1;
+}
+
+.brooklyn > .brooklyn-select-button > span,
+.brooklyn > .brooklyn-select-textbox > input,
+.brooklyn.brooklyn-checkbox > span {
+    transition: box-shadow 0.2s ease-out, border 0.2s ease-out;
+}
+
+.brooklyn.showLabel > .brooklyn-select-button > span,
+.brooklyn.showLabel > .brooklyn-select-textbox > input,
+.brooklyn.showLabel.brooklyn-textbox > input {
+    padding-top: 20px;
+    padding-bottom: 4px;
+}
+
+.brooklyn.active > .brooklyn-select-button,
+.brooklyn.active > .brooklyn-select-textbox > input,
+.brooklyn.active.brooklyn-textbox > input,
+.brooklyn.active.brooklyn-checkbox > span {
+    border-color: #66afe9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: 0 none;
+}
+
+/* checkbox specific */
+
+.brooklyn.brooklyn-checkbox > span {
+    display: block;
+    padding: 12px;
+}
+
+.brooklyn.brooklyn-checkbox > span > i {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    font-size: 16px;
+    transition: all 1ms;
+}
+
+/* textbox specific */
+.brooklyn-textbox > input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    padding: 12px;
+    text-align: left;
+    transition: all 0.2s ease-out;
+}
+
+/* selectbox specific */
+.brooklyn-select-button {
+    transition: all 0.2s ease-out;
+}
+
+ul.brooklyn-select-results {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    display: none;
+    float: left;
+    height: auto;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    max-height: 200px;
+    overflow-x: hidden;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+.brooklyn.opened > ul.brooklyn-select-results {
+    display: block;
+}
+ul.brooklyn-select-results > li {
+    cursor: pointer;
+}
+ul.brooklyn-select-results > li > a {
+    display: block;
+    padding: 3px 20px;
+    text-decoration: none;
+    color: black;
+}
+ul.brooklyn-select-results > li > a:hover {
+    background: #eee;
+}
+ul.brooklyn-select-results > li.active > a {
+    background: #428bca;
+    color: white;
+}
+.brooklyn-select-textbox > input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.brooklyn-select > .brooklyn-select-button {
+    display: block;
+}
+.brooklyn-select.opened > .brooklyn-select-textbox {
+    display: block;
+}
+.brooklyn-select.opened > .brooklyn-select-button {
+    display: none;
+}
+.brooklyn-select > .brooklyn-select-textbox {
+    display: none;
+}
+.brooklyn-select-button > span, .brooklyn-select-textbox > input {
+    display: block;
+    text-align: left;
+    padding: 12px;
+}
+.brooklyn-select-button > i {
+    position: absolute;
+    right: 12px;
+    top: 22px;
+}

@@ -16,7 +16,7 @@ input.focus-trap {
     width: 100%;
     position: relative;
 }
-.brooklyn .btn, .brooklyn input {
+.brooklyn .btn, .brooklyn input, .brooklyn textarea {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -45,7 +45,8 @@ input.focus-trap {
 
 .brooklyn.showLabel > .brooklyn-select-button > span,
 .brooklyn.showLabel > .brooklyn-select-textbox > input,
-.brooklyn.showLabel.brooklyn-textbox > input {
+.brooklyn.showLabel.brooklyn-textbox > input,
+.brooklyn.showLabel.brooklyn-textarea > textarea {
     padding-top: 20px;
     padding-bottom: 4px;
 }
@@ -53,7 +54,8 @@ input.focus-trap {
 .brooklyn.active > .brooklyn-select-button,
 .brooklyn.active > .brooklyn-select-textbox > input,
 .brooklyn.active.brooklyn-textbox > input,
-.brooklyn.active.brooklyn-checkbox > span {
+.brooklyn.active.brooklyn-checkbox > span,
+.brooklyn.active.brooklyn-textarea > textarea {
     border-color: #66afe9;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
     outline: 0 none;
@@ -82,6 +84,19 @@ input.focus-trap {
     padding: 12px;
     text-align: left;
     transition: all 0.2s ease-out;
+}
+
+/* textarea specific */
+.brooklyn-textarea > textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    min-height: 45px;
+    padding: 12px;
+    resize: vertical;
+    text-align: left;
+    transition: all 0.2s ease-out;
+    /* overflow: hidden; /* ? */
 }
 
 /* selectbox specific */

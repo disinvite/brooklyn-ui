@@ -309,6 +309,60 @@ function bkTextbox() {
     };
 }
 
+function bkTextarea() {
+    return {
+        restrict: 'E',
+        template:
+            '<div class="brooklyn brooklyn-textarea">' +
+            '<label></label>' +
+            '<textarea ng-model="val" ng-trim="false"></textarea>' +
+            '</div>',
+        require: 'ngModel',
+        scope: {},
+        link: function(scope, element, attrs, ngModelCtrl) {
+            var el_container = angular.element(element.find('div'));
+            var el_label     = angular.element(element.find('label'));
+            var el_textarea  = angular.element(element.find('textarea'));
+            el_label.text(attrs.placeholder);
+            el_textarea.attr('placeholder',attrs.placeholder);
+
+            ngModelCtrl.$formatters.push(function(modelValue) {
+                return modelValue || '';
+            });
+
+            ngModelCtrl.$render = function() {
+                scope.val = ngModelCtrl.$viewValue;
+                el_container.toggleClass('showLabel', !ngModelCtrl.$isEmpty(scope.val));
+                
+                //console.log(scope.val.length + '  ##  ' +scope.val.split('\n').length);
+                //var n_spaces = (scope.val.match(/[\n\r]/g)||[]).length;
+                //el_textarea.css('height',(45 + (n_spaces * 20)) + 'px');
+            }
+
+            scope.$watch('val', function() {
+                ngModelCtrl.$setViewValue(scope.val);
+                ngModelCtrl.$render();
+            });
+
+            ngModelCtrl.$parsers.push(function(viewValue) {
+                return viewValue || '';
+            });
+
+            el_container.click(function() {
+                el_textarea.focus();
+            });
+            
+            el_textarea.focus(function() {
+                el_container.addClass('active');
+            });
+
+            el_textarea.blur(function() {
+                el_container.removeClass('active');
+            });
+        }
+    }
+}
+
 function bkCheckbox() {
     return {
         restrict: 'E',
@@ -379,5 +433,6 @@ function bkCheckbox() {
 angular.module('brooklyn-ui', [])
 .directive('bkSelectbox',bkSelectbox)
 .directive('bkTextbox',bkTextbox)
+.directive('bkTextarea',bkTextarea)
 .directive('bkCheckbox',bkCheckbox);
 

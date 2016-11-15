@@ -281,7 +281,8 @@ function bkTextbox() {
             '</div>',
         require: 'ngModel',
         scope: {
-            disabled: '=ngDisabled'
+            disabled: '=ngDisabled',
+            list: '=ngList'
         },
         link: function(scope, element, attrs, ngModelCtrl) {
             var el_container = angular.element(element.find('div'));
@@ -306,6 +307,11 @@ function bkTextbox() {
             
             scope.$watch('disabled', function() {
                 el_input.prop('disabled', scope.disabled);
+            });
+
+            scope.$watch('list', function() {
+                el_input.prop('ng-list', scope.list);
+                el_input.prop('ng-trim', scope.list);
             });
 
             ngModelCtrl.$parsers.push(function(viewValue) {

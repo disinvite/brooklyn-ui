@@ -6,11 +6,11 @@ function bkSelectbox($interval) {
         
         template:
             '<div class="brooklyn brooklyn-select">' +
-            '<div class="btn btn-default brooklyn-select-button">' +
+            '<button class="btn btn-default brooklyn-select-button">' +
             '<label></label>' +
             '<span>stuff</span>' +
             '<i class="caret pull-right"></i>' +
-            '</div>' +
+            '</button>' +
             '<div class="brooklyn-select-textbox">' +
             '<label></label>' +
             '<input type="text" class="" ng-model="val" disabled />' +
@@ -58,6 +58,7 @@ function bkSelectbox($interval) {
                 } else {
                     el_select_button.removeClass('brooklyn-disabled');
                 }
+                el_select_button.prop('disabled', scope.disabled);
                 el_focus_trap.prop('disabled', scope.disabled);
             });
             

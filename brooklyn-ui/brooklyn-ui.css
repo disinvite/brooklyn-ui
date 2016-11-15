@@ -16,10 +16,6 @@ input.focus-trap {
     width: 100%;
     position: relative;
 }
-.brooklyn-disabled {
-    background-color: #e3e3e3;
-    cursor: not-allowed;
-}
 .brooklyn .btn, .brooklyn input, .brooklyn textarea {
     margin: 0;
     padding: 0;
@@ -45,6 +41,12 @@ input.focus-trap {
 .brooklyn > .brooklyn-select-textbox > input,
 .brooklyn.brooklyn-checkbox > span {
     transition: box-shadow 0.2s ease-out, border 0.2s ease-out;
+}
+
+.brooklyn-select-button[disabled], .brooklyn-select-button[disabled]:hover, .brooklyn-select-button[disabled]:focus {
+    background-color: #e3e3e3;
+    color: #848484;
+    cursor: not-allowed;
 }
 
 .brooklyn.showLabel > .brooklyn-select-button > span,

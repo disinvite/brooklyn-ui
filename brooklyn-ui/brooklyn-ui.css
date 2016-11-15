@@ -16,6 +16,10 @@ input.focus-trap {
     width: 100%;
     position: relative;
 }
+.brooklyn-disabled {
+    background-color: #e3e3e3;
+    cursor: not-allowed;
+}
 .brooklyn .btn, .brooklyn input, .brooklyn textarea {
     margin: 0;
     padding: 0;

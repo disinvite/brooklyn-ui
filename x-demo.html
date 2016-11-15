@@ -12,12 +12,13 @@
 <div class="container">
     <h1>Brooklyn UI</h1>
     <div class="form-group">
-        <bk-selectbox placeholder="make your selection" ng-model="x" values="states" display-column="name" sub-column="name" value-column="abbreviation"></bk-selectbox>
+        <bk-selectbox placeholder="make your selection" ng-model="x" values="states" display-column="name" sub-column="name" value-column="abbreviation" ng-disabled="disabled.sel1"></bk-selectbox>
     </div>
     <p>The value is <u>{{x}}</u></p>
     <button class="btn btn-danger" ng-click="x = ''">Clear</button>
     <button class="btn btn-success" ng-click="x = 'AX'">Value to 'AX'</button>
     <button class="btn btn-success" ng-click="x = 'AZ'">Value to 'AZ'</button>
+    <button class="btn btn-default" ng-click="disabled.sel1 = !disabled.sel1">Toggle disabled ({{disabled.sel1}})</button>
     
     <div class="form-group">
         <bk-selectbox placeholder="colour" ng-model="y" values="colors" value-column="color" display-column="value"></bk-selectbox>
@@ -27,10 +28,11 @@
     
 
     <div class="form-group">
-        <bk-textbox placeholder="First Name" ng-model="name" />
+        <bk-textbox placeholder="First Name" ng-model="name" ng-disabled="disabled.text2" />
     </div>
     <p>The value is <u>{{name}}</u></p>
     <button class="btn btn-danger" ng-click="name = ''">Clear</button>
+    <button class="btn btn-default" ng-click="disabled.text2 = !disabled.text2">Toggle disabled ({{disabled.text2}})</button>
 
     <hr/>
     
@@ -53,6 +55,8 @@ function ctrl($scope,$http) {
         $scope.states = response;
     });
     $scope.colors = [{color: "red",value: "#f00"},{color: "green",value: "#0f0"},{color: "blue",value: "#00f"},{color: "cyan",value: "#0ff"},{color: "magenta",value:"#f0f"},{color: "yellow",value: "#ff0"},{color: "black",value: "#000"}];
+    
+    $scope.disabled = {'sel1': 0, 'text2': 1};
 }
 
 angular.module('brooklyn-ui-demo', ['brooklyn-ui'])

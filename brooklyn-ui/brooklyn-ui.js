@@ -28,6 +28,7 @@ function bkSelectbox($interval) {
         require: 'ngModel',
         scope: {
             values: '=',
+            disabled: '=ngDisabled',
             displayColumn: '@',
             valueColumn: '@',
             subColumn: '@',
@@ -50,6 +51,15 @@ function bkSelectbox($interval) {
             scope.opened = false;
             var mousedown = false;
             var blur_interval;
+            
+            scope.$watch('disabled', function() {
+                if(scope.disabled) {
+                    el_select_button.addClass('brooklyn-disabled');
+                } else {
+                    el_select_button.removeClass('brooklyn-disabled');
+                }
+                el_focus_trap.prop('disabled', scope.disabled);
+            });
             
             scope.$watch('values', function() {
                 if(scope.values == undefined) {
@@ -99,6 +109,7 @@ function bkSelectbox($interval) {
             
             // hide the button element and show the textbox/results window
             function open() {
+                if(scope.disabled) { return; }
                 scope.opened = true;
                 scope.clickedOption = false;
                 el_main.addClass('opened');
@@ -268,7 +279,9 @@ function bkTextbox() {
             '<input type="text" ng-model="val"/>' +
             '</div>',
         require: 'ngModel',
-        scope: {},
+        scope: {
+            disabled: '=ngDisabled'
+        },
         link: function(scope, element, attrs, ngModelCtrl) {
             var el_container = angular.element(element.find('div'));
             var el_label     = angular.element(element.find('label'));
@@ -288,6 +301,10 @@ function bkTextbox() {
             scope.$watch('val', function() {
                 ngModelCtrl.$setViewValue(scope.val);
                 ngModelCtrl.$render();
+            });
+            
+            scope.$watch('disabled', function() {
+                el_input.prop('disabled', scope.disabled);
             });
 
             ngModelCtrl.$parsers.push(function(viewValue) {

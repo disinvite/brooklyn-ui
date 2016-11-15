@@ -16,7 +16,7 @@ function bkSelectbox($interval) {
             '<input type="text" class="" ng-model="val" disabled />' +
             '</div>' +
             '<ul class="brooklyn-select-results" ng-show="filtered.length > 0">' +
-            '<li ng-repeat="v in values | filter: val | orderBy: displayColumn as filtered" ng-class="{\'active\': $index == selindex}">' +
+            '<li ng-repeat="v in values | filter: val | orderBy:order as filtered" ng-class="{\'active\': $index == selindex}">' +
             '<a href ng-click="select($index,1)">' +
             '<div ng-bind="getDisplayCol(v)"/>' +
             '<small ng-if="getShowSub(v)" ng-bind="getSubCol(v)" />' +
@@ -28,6 +28,7 @@ function bkSelectbox($interval) {
         require: 'ngModel',
         scope: {
             values: '=',
+            order: '=orderBy',
             disabled: '=ngDisabled',
             displayColumn: '@',
             valueColumn: '@',

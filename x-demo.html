@@ -21,8 +21,10 @@
     <button class="btn btn-default" ng-click="disabled.sel1 = !disabled.sel1">Toggle disabled ({{disabled.sel1}})</button>
     
     <div class="form-group">
-        <bk-selectbox placeholder="colour" ng-model="y" values="colors" value-column="color" display-column="value"></bk-selectbox>
+        <bk-selectbox placeholder="colour" ng-model="y" values="colors" order-by="'color'" value-column="color" display-column="value"></bk-selectbox>
     </div>
+
+    <pre>{{ pprint(colors | orderBy: '-color') }}</pre>
 
     <hr/>
     

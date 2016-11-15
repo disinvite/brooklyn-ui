@@ -343,7 +343,9 @@ function bkTextarea() {
             '<textarea ng-model="val" ng-trim="false"></textarea>' +
             '</div>',
         require: 'ngModel',
-        scope: {},
+        scope: {
+            disabled: '=ngDisabled'
+        },
         link: function(scope, element, attrs, ngModelCtrl) {
             var el_container = angular.element(element.find('div'));
             var el_label     = angular.element(element.find('label'));
@@ -367,6 +369,10 @@ function bkTextarea() {
             scope.$watch('val', function() {
                 ngModelCtrl.$setViewValue(scope.val);
                 ngModelCtrl.$render();
+            });
+
+            scope.$watch('disabled', function() {
+                el_textarea.prop('disabled', scope.disabled);
             });
 
             ngModelCtrl.$parsers.push(function(viewValue) {

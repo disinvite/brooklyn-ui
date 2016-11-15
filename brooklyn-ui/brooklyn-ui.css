@@ -43,7 +43,8 @@ input.focus-trap {
     transition: box-shadow 0.2s ease-out, border 0.2s ease-out;
 }
 
-.brooklyn-select-button[disabled], .brooklyn-select-button[disabled]:hover, .brooklyn-select-button[disabled]:focus {
+.brooklyn-select-button[disabled], .brooklyn-select-button[disabled]:hover, .brooklyn-select-button[disabled]:focus, 
+.brooklyn-textarea > textarea[disabled] {
     background-color: #e3e3e3;
     color: #848484;
     cursor: not-allowed;

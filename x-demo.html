@@ -51,8 +51,9 @@
     <hr/>
 
    <div class="form-group">
-        <bk-textarea ng-model="name" placeholder="some stuff" />
+        <bk-textarea ng-model="name" placeholder="some stuff" ng-disabled="disabled.ta" />
     </div>
+    <button class="btn btn-default" ng-click="disabled.ta = !disabled.ta">Toggle disabled ({{disabled.ta}})</button>
     
     <hr/>
 
@@ -75,7 +76,7 @@ function ctrl($scope,$http) {
     });
     $scope.colors = [{color: "red",value: "#f00"},{color: "green",value: "#0f0"},{color: "blue",value: "#00f"},{color: "cyan",value: "#0ff"},{color: "magenta",value:"#f0f"},{color: "yellow",value: "#ff0"},{color: "black",value: "#000"}];
     
-    $scope.disabled = {'sel1': 0, 'text2': 1, 'btn2': 0};
+    $scope.disabled = {'sel1': 0, 'text2': 1, 'btn2': 0, 'ta': 0};
 
     $scope.pprint = function(val) {
         return JSON.stringify(val);

@@ -39,7 +39,7 @@ input.focus-trap {
 
 .brooklyn > .brooklyn-select-button > span,
 .brooklyn > .brooklyn-select-textbox > input,
-.brooklyn.brooklyn-checkbox > span {
+.brooklyn.brooklyn-checkbox > button {
     transition: box-shadow 0.2s ease-out, border 0.2s ease-out;
 }
 
@@ -60,7 +60,7 @@ input.focus-trap {
 .brooklyn.active > .brooklyn-select-button,
 .brooklyn.active > .brooklyn-select-textbox > input,
 .brooklyn.active.brooklyn-textbox > input,
-.brooklyn.active.brooklyn-checkbox > span,
+.brooklyn.active.brooklyn-checkbox > button,
 .brooklyn.active.brooklyn-textarea > textarea {
     border-color: #66afe9;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
@@ -69,12 +69,12 @@ input.focus-trap {
 
 /* checkbox specific */
 
-.brooklyn.brooklyn-checkbox > span {
+.brooklyn.brooklyn-checkbox > button {
     display: block;
     padding: 12px;
 }
 
-.brooklyn.brooklyn-checkbox > span > i {
+.brooklyn.brooklyn-checkbox > button > i {
     position: absolute;
     top: 14px;
     left: 12px;

@@ -393,21 +393,20 @@ function bkCheckbox() {
         restrict: 'E',
         template:
             '<div class="brooklyn brooklyn-checkbox">' +
-            '<span class="btn" ng-click="val = !val">' +
+            '<button class="btn" ng-click="val = !val">' +
             '<i class="glyphicon"></i>' +
             '<span>{{ caption }}</span>' +
-            '<input class="focus-trap" type="text" />' +
-            '</span>' +
+            '</button>' +
             '</div>',
         require: 'ngModel',
         scope: {
-            caption: '@'
+            caption: '@',
+            disabled: '=ngDisabled',
         },
         link: function(scope, element, attrs, ngModelCtrl) {
             var container  = angular.element(element.find('div'));
-            var button = angular.element(element.find('span')[0]);
+            var button = angular.element(element.find('button')[0]);
             var icon = angular.element(element.find('i'));
-            var focus_trap = angular.element(element.find('input'));
 
             if(scope.caption == undefined) {
                 scope.caption = '&nbsp;';
@@ -430,10 +429,15 @@ function bkCheckbox() {
                 ngModelCtrl.$render();
             });
 
+            scope.$watch('disabled', function() {
+                button.prop('disabled', scope.disabled);
+            });
+
             ngModelCtrl.$parsers.push(function(viewValue) {
                 return viewValue;
             });
 
+            /*
             focus_trap.on('focus', function() {
                 container.addClass('active');
             }).on('blur', function() {
@@ -451,6 +455,7 @@ function bkCheckbox() {
                         break;
                 }
             });
+            */
         }
     };
 }

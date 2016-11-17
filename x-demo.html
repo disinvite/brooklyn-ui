@@ -10,63 +10,106 @@
 </head>
 <body ng-app="brooklyn-ui-demo" ng-controller="ctrl">
 <div class="container">
-    <h1>Brooklyn UI</h1>
-    <div class="form-group">
-        <bk-selectbox placeholder="make your selection" ng-model="x" values="states" display-column="name" sub-column="name" value-column="abbreviation" ng-disabled="disabled.sel1"></bk-selectbox>
+    <div class="page-header">
+        <h1>Brooklyn UI</h1>
     </div>
-    <p>The value is <u>{{x}}</u></p>
-    <button class="btn btn-danger" ng-click="x = ''">Clear</button>
-    <button class="btn btn-success" ng-click="x = 'AX'">Value to 'AX'</button>
-    <button class="btn btn-success" ng-click="x = 'AZ'">Value to 'AZ'</button>
-    <button class="btn btn-default" ng-click="disabled.sel1 = !disabled.sel1">Toggle disabled ({{disabled.sel1}})</button>
-    
-    <div class="form-group">
-        <bk-selectbox placeholder="colour" ng-model="y" values="colors" order-by="'color'" value-column="color" display-column="value"></bk-selectbox>
+    <div class="row">
+        <div class="col-md-8">
+            <label>Dropdown</label>
+            <div class="form-group">
+                <bk-selectbox placeholder="make your selection" ng-model="x" values="states" display-column="name" sub-column="name" value-column="abbreviation" ng-disabled="disabled.sel1"></bk-selectbox>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+            <pre>The value is: {{x}}</pre>
+            <button class="btn btn-danger" ng-click="x = ''">Clear</button>
+            <button class="btn btn-success" ng-click="x = 'AX'">Value to 'AX'</button>
+            <button class="btn btn-success" ng-click="x = 'AZ'">Value to 'AZ'</button>
+            <span class="checkbox"><label><input type="checkbox" ng-model="disabled.sel1" ng-false-value="0" ng-true-value="1"/><span>Disabled</span></label></span>
+        </div>
     </div>
-
-    <pre>{{ pprint(colors | orderBy: '-color') }}</pre>
-
-    <hr/>
-    
-
-    <div class="form-group">
-        <bk-textbox placeholder="First Name" ng-model="name" ng-disabled="disabled.text2" />
-    </div>
-    <p>The value is <u>{{name}}</u></p>
-    <button class="btn btn-danger" ng-click="name = ''">Clear</button>
-    <button class="btn btn-default" ng-click="disabled.text2 = !disabled.text2">Toggle disabled ({{disabled.text2}})</button>
-
-    <hr/>
-
-    <div class="form-group">
-        <bk-textbox placeholder="Numbers (no nglist)" ng-model="numbers1" />
-    </div>
-    <pre>The value is: {{ pprint(numbers1) }}</pre>
-
-    <div class="form-group">
-        <bk-textbox placeholder="Numbers (nglist)" ng-model="numbers2" ng-list />
-    </div>
-    <pre>The value is: {{ pprint(numbers2) }}</pre>
     
     <hr/>
-
-   <div class="form-group">
-        <bk-textarea ng-model="name" placeholder="some stuff" ng-disabled="disabled.ta" />
-    </div>
-    <button class="btn btn-default" ng-click="disabled.ta = !disabled.ta">Toggle disabled ({{disabled.ta}})</button>
     
+    <div class="row">
+        <div class="col-md-8">
+            <label>Dropdown (custom orderby)</label>
+            <div class="form-group">
+                <bk-selectbox placeholder="colour" ng-model="y" values="colors" order-by="'color'" value-column="color" display-column="value"></bk-selectbox>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+            <pre>order: {{ pprint(colors | orderBy: '-color') }}</pre>
+        </div>
+    </div>
+
     <hr/>
 
-    <div class="form-group">
-        <bk-checkbox ng-model="bool1" caption="Checkbox Numero Uno"></bk-checkbox>
+    <div class="row">
+        <div class="col-md-8">
+            <label>Textbox</label>
+            <div class="form-group">
+                <bk-textbox placeholder="First Name" ng-model="name" ng-disabled="disabled.text2" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+            <pre>The value is: {{name}}</pre>
+            <button class="btn btn-danger" ng-click="name = ''">Clear</button>
+            <span class="checkbox"><label><input type="checkbox" ng-model="disabled.text2" ng-false-value="0" ng-true-value="1"/><span>Disabled</span></label></span>
+        </div>
     </div>
-    <p>The value is <u>{{bool1}}</u></p>
-    <button class="btn btn-danger" ng-click="bool1 = false">Clear</button>
 
-    <div class="form-group">
-        <bk-checkbox ng-model="bool2" caption="Checkbox Numero Dos" ng-disabled="disabled.btn2"></bk-checkbox>
+    <hr/>
+
+    <div class="row">
+        <div class="col-md-8">
+            <label>Textbox (ngList)</label>
+            <div class="form-group">
+                <bk-textbox placeholder="Numbers (nglist)" ng-model="numbers2" ng-list />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+            <pre>The value is: {{ pprint(numbers2) }}</pre>
+        </div>
     </div>
-    <button class="btn btn-default" ng-click="disabled.btn2 = !disabled.btn2">Toggle disabled ({{disabled.btn2}})</button>
+
+    <hr/>
+
+    <div class="row">
+        <div class="col-md-8">
+            <label>Textarea</label>
+            <div class="form-group">
+                <bk-textarea ng-model="name" placeholder="some stuff" ng-disabled="disabled.ta" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+            <span class="checkbox"><label><input type="checkbox" ng-model="disabled.ta" ng-false-value="0" ng-true-value="1"/><span>Disabled</span></label></span>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="row">
+        <div class="col-md-8">
+            <label>Checkboxes</label>
+            <div class="form-group">
+                <bk-checkbox ng-model="bool1" caption="Checkbox Numero Uno"></bk-checkbox>
+                <bk-checkbox ng-model="bool2" caption="Checkbox Numero Dos" ng-disabled="disabled.btn2"></bk-checkbox>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>&nbsp;</label>
+            <pre>The value of checkbox1 is {{bool1}}</pre>
+            <span class="checkbox"><label><input type="checkbox" ng-model="disabled.btn2" ng-false-value="0" ng-true-value="1"/><span>Disable checkbox 2</span></label></span>
+        </div>
+    </div>
+
+    <hr/>
 
 </div>
 <script>
@@ -83,7 +126,15 @@ function ctrl($scope,$http) {
     }
 }
 
+function nl2br($filter) {
+    return function(data) {
+        if (!data) return data;
+        return data.replace(/\n\r?/g, '<br />');
+    };
+}
+
 angular.module('brooklyn-ui-demo', ['brooklyn-ui'])
+.filter('nl2br',nl2br)
 .controller('ctrl',ctrl);
 </script>
 </body>

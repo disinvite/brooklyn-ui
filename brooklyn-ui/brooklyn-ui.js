@@ -394,6 +394,60 @@ function bkTextarea() {
     }
 }
 
+function bkRadio() {
+    return {
+        restrict: 'E',
+        template:
+            '<div class="brooklyn brooklyn-checkbox">' +
+            '<button class="btn" ng-click="val = value">' +
+            '<i class="glyphicon"></i>' +
+            '<span>{{ caption }}</span>' +
+            '</button>' +
+            '</div>',
+        require: 'ngModel',
+        scope: {
+            caption: '@',
+            value: '@',
+            disabled: '=ngDisabled',
+        },
+        link: function(scope, element, attrs, ngModelCtrl) {
+            var container  = angular.element(element.find('div'));
+            var button = angular.element(element.find('button')[0]);
+            var icon = angular.element(element.find('i'));
+
+            if(scope.caption == undefined) {
+                scope.caption = '&nbsp;';
+            }
+
+            ngModelCtrl.$formatters.push(function(modelValue) {
+                return modelValue;
+            });
+
+            ngModelCtrl.$render = function() {
+                scope.val = ngModelCtrl.$viewValue;
+                var on = (scope.val == scope.value);
+                icon.toggleClass('glyphicon-check',on);
+                icon.toggleClass('glyphicon-unchecked',!on);
+                button.toggleClass('btn-primary',on);
+                button.toggleClass('btn-default',!on);
+            }
+
+            scope.$watch('val', function() {
+                ngModelCtrl.$setViewValue(scope.val);
+                ngModelCtrl.$render();
+            });
+
+            scope.$watch('disabled', function() {
+                button.prop('disabled', scope.disabled);
+            });
+
+            ngModelCtrl.$parsers.push(function(viewValue) {
+                return viewValue;
+            });
+        }
+    };
+}
+
 function bkCheckbox() {
     return {
         restrict: 'E',
@@ -442,26 +496,6 @@ function bkCheckbox() {
             ngModelCtrl.$parsers.push(function(viewValue) {
                 return viewValue;
             });
-
-            /*
-            focus_trap.on('focus', function() {
-                container.addClass('active');
-            }).on('blur', function() {
-                container.removeClass('active');
-            }).on('keydown', function(event) {
-                switch(event.which) {
-                    case 13: // enter
-                    case 32: // spacebar
-                        scope.$apply(function() {
-                            scope.val = !scope.val;
-                        });
-                        break;
-                    default:
-                        return event.which;
-                        break;
-                }
-            });
-            */
         }
     };
 }
@@ -470,5 +504,6 @@ angular.module('brooklyn-ui', [])
 .directive('bkSelectbox',bkSelectbox)
 .directive('bkTextbox',bkTextbox)
 .directive('bkTextarea',bkTextarea)
+.directive('bkRadio',bkRadio)
 .directive('bkCheckbox',bkCheckbox);
 

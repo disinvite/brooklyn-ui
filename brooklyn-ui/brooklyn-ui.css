@@ -24,14 +24,14 @@ input.focus-trap {
 }
 .brooklyn label {
     position: absolute;
-    padding: 4px 0;
+    padding: 2px 0;
     top: 0;
-    left: 12px;
+    left: 13px;
     font-weight: normal;
     color: #888;
     transition: all 0.2s ease-out;
     opacity: 0;
-    font-size: 10pt;
+    font-size: 8pt;
 }
 .brooklyn.showLabel label {
     opacity: 1;
@@ -54,8 +54,8 @@ input.focus-trap {
 .brooklyn.showLabel > .brooklyn-select-textbox > input,
 .brooklyn.showLabel.brooklyn-textbox > input,
 .brooklyn.showLabel.brooklyn-textarea > textarea {
-    padding-top: 20px;
-    padding-bottom: 4px;
+    padding-top: 12px;
+    padding-bottom: 0px;
 }
 
 .brooklyn.active > .brooklyn-select-button,
@@ -72,14 +72,14 @@ input.focus-trap {
 
 .brooklyn.brooklyn-checkbox > button {
     display: block;
-    padding: 12px;
+    padding: 6px 12px;
 }
 
 .brooklyn.brooklyn-checkbox > button > i {
     position: absolute;
-    top: 14px;
+    top: 10px;
     left: 12px;
-    font-size: 16px;
+    font-size: 14px;
     transition: all 1ms;
 }
 
@@ -88,7 +88,7 @@ input.focus-trap {
     border: 1px solid #ccc;
     border-radius: 4px;
     display: block;
-    padding: 12px;
+    padding: 6px 12px;
     text-align: left;
     transition: all 0.2s ease-out;
 }
@@ -99,7 +99,7 @@ input.focus-trap {
     border-radius: 4px;
     display: block;
     min-height: 45px;
-    padding: 12px;
+    padding: 6px 12px;
     resize: vertical;
     text-align: left;
     transition: all 0.2s ease-out;
@@ -166,10 +166,10 @@ ul.brooklyn-select-results > li.active > a {
 .brooklyn-select-button > span, .brooklyn-select-textbox > input {
     display: block;
     text-align: left;
-    padding: 12px;
+    padding: 6px 12px;
 }
 .brooklyn-select-button > i {
     position: absolute;
     right: 12px;
-    top: 22px;
+    top: 16px;
 }

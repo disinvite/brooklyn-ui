@@ -50,8 +50,11 @@
     <div class="row">
         <div class="col-md-8">
             <label>Textbox</label>
-            <div class="form-group">
-                <bk-textbox placeholder="First Name" ng-model="name" ng-disabled="disabled.text2" />
+            <div class="form-group row">
+                <bk-textbox class="col-xs-6" placeholder="First Name" ng-model="name" ng-disabled="disabled.text2"></bk-textbox>
+                <div class="col-xs-6">
+                    <input class="form-control" ng-model="name" placeholder="First Name (ordinary textbox)"></input>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -97,9 +100,9 @@
     <div class="row">
         <div class="col-md-8">
             <label>Checkboxes</label>
-            <div class="form-group">
-                <bk-checkbox ng-model="bool1" caption="Checkbox Numero Uno"></bk-checkbox>
-                <bk-checkbox ng-model="bool2" caption="Checkbox Numero Dos" ng-disabled="disabled.btn2"></bk-checkbox>
+            <div class="form-group row">
+                <bk-checkbox class="col-xs-6" ng-model="bool1" caption="Checkbox Numero Uno"></bk-checkbox>
+                <bk-checkbox class="col-xs-6" ng-model="bool2" caption="Checkbox Numero Dos" ng-disabled="disabled.btn2"></bk-checkbox>
             </div>
         </div>
         <div class="col-md-4">
@@ -136,7 +139,7 @@ function ctrl($scope,$http) {
     });
     $scope.colors = [{color: "red",value: "#f00"},{color: "green",value: "#0f0"},{color: "blue",value: "#00f"},{color: "cyan",value: "#0ff"},{color: "magenta",value:"#f0f"},{color: "yellow",value: "#ff0"},{color: "black",value: "#000"}];
     
-    $scope.disabled = {'sel1': 0, 'text2': 1, 'btn2': 0, 'ta': 0};
+    $scope.disabled = {'sel1': 0, 'text2': 0, 'btn2': 0, 'ta': 0};
 
     $scope.pprint = function(val) {
         return JSON.stringify(val);

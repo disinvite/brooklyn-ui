@@ -452,8 +452,9 @@ function bkCheckbox() {
     return {
         restrict: 'E',
         template:
-            '<div class="brooklyn brooklyn-checkbox">' +
+            '<div class="brooklyn brooklyn-checkbox showLabel">' +
             '<button class="btn" ng-click="val = !val">' +
+            '<label>{{ label }}</label>' +
             '<i class="glyphicon"></i>' +
             '<span>{{ caption }}</span>' +
             '</button>' +
@@ -462,11 +463,13 @@ function bkCheckbox() {
         scope: {
             caption: '@',
             disabled: '=ngDisabled',
+            label: '@'
         },
         link: function(scope, element, attrs, ngModelCtrl) {
             var container  = angular.element(element.find('div'));
             var button = angular.element(element.find('button')[0]);
             var icon = angular.element(element.find('i'));
+            var label = angular.element(element.find('label'));
 
             if(scope.caption == undefined) {
                 scope.caption = '&nbsp;';
@@ -482,6 +485,7 @@ function bkCheckbox() {
                 icon.toggleClass('glyphicon-unchecked',!scope.val);
                 button.toggleClass('btn-primary',scope.val);
                 button.toggleClass('btn-default',!scope.val);
+                container.toggleClass('showLabel',scope.label !== undefined);
             }
 
             scope.$watch('val', function() {

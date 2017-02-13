@@ -58,6 +58,18 @@ input.focus-trap {
     padding-bottom: 0px;
 }
 
+.brooklyn.brooklyn-checkbox.showLabel > button > span {
+    position: relative;
+    top: 6px;
+}
+
+.brooklyn.brooklyn-checkbox.showLabel > button > label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
 .brooklyn.active > .brooklyn-select-button,
 .brooklyn.active > .brooklyn-select-textbox > input,
 .brooklyn.active.brooklyn-textbox > input,
@@ -78,7 +90,7 @@ input.focus-trap {
 .brooklyn.brooklyn-checkbox > button > i {
     position: absolute;
     top: 10px;
-    left: 12px;
+    right: 12px;
     font-size: 14px;
     transition: all 1ms;
 }

@@ -400,6 +400,7 @@ function bkRadio() {
         template:
             '<div class="brooklyn brooklyn-checkbox">' +
             '<button class="btn" ng-click="val = value">' +
+            '<label>{{ label }}</label>' +
             '<i class="glyphicon"></i>' +
             '<span>{{ caption }}</span>' +
             '</button>' +
@@ -409,6 +410,7 @@ function bkRadio() {
             caption: '@',
             value: '@',
             disabled: '=ngDisabled',
+            label: '@'
         },
         link: function(scope, element, attrs, ngModelCtrl) {
             var container  = angular.element(element.find('div'));
@@ -430,6 +432,7 @@ function bkRadio() {
                 icon.toggleClass('glyphicon-unchecked',!on);
                 button.toggleClass('btn-primary',on);
                 button.toggleClass('btn-default',!on);
+                container.toggleClass('showLabel',scope.label !== undefined);
             }
 
             scope.$watch('val', function() {

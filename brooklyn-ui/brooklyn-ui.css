@@ -33,6 +33,12 @@ input.focus-trap {
     opacity: 0;
     font-size: 8pt;
 }
+.brooklyn.brooklyn-checkbox label {
+    transition: all 1ms;
+}
+.brooklyn.brooklyn-checkbox > button.btn-primary label {
+    color: #bbb;
+}
 .brooklyn.showLabel label {
     opacity: 1;
 }
@@ -90,7 +96,7 @@ input.focus-trap {
 .brooklyn.brooklyn-checkbox > button > i {
     position: absolute;
     top: 10px;
-    right: 12px;
+    left: 12px;
     font-size: 14px;
     transition: all 1ms;
 }

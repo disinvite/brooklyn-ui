@@ -1,6 +1,6 @@
 // NO SLEEP TILL BROOKLYN
 
-function bkSelectbox($interval) {
+function bkSelectbox($document, $interval) {
     return {
         restrict: 'E',
         
@@ -108,6 +108,25 @@ function bkSelectbox($interval) {
             });
             
             
+            function onDocumentClick(e) {
+                if (!scope.opened) { 
+                    return;
+                }
+
+                var contains = window.jQuery.contains(element[0], e.target);
+                console.log('doc click ' + contains);
+                if(!contains) {
+                    scope.select(scope.selindex,0);
+                }
+            }
+
+            //$document.on('click', onDocumentClick);
+            $document.on('mouseup', onDocumentClick);
+
+            scope.$on('$destroy', function() {
+                //$document.off('click', onDocumentClick);
+                $document.off('mouseup', onDocumentClick);
+            });
             
             // hide the button element and show the textbox/results window
             function open() {
